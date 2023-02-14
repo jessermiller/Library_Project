@@ -5,6 +5,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Library Project</title>
+  <style>
+    body {
+      background-color: #C19A6B;
+    }
+  </style>
 </head>
 
 <body>
@@ -15,10 +20,19 @@
         text-align: center;
       ">
     <div>
-      <h1>Library Project</h1>
+      <h1>Supply & Withdrawl</h1>
       <div id="library">
         <!-- Add table here -->
+        <table>
+          <label for="bookTitle">Title&nbsp<input type="text" name="bookTitle" id="bookTitle"></label>
+          <label for="bookAuthor">&nbspAuthor&nbsp<input type="text" name="bookAuthor" id="bookAuthor"></label>
+          <label for="bookRead">&nbspRead&nbsp<input type="checkbox" name="bookRead" id="bookRead"></label>
+        </table>
+        <br>
+        <button type="submit">Add Book</button>
+        <button type="submit">Remove Book</button>
         <table id="table" style="min-width: 680px; margin: 2rem">
+          <h1>Library</h1>
           <thead>
             <tr>
               <th>Title</th>
@@ -28,15 +42,13 @@
           </thead>
           <tbody>
             <tr>
-              <td><label for="bookTitle"><input type="text" name="bookTitle" id="bookTitle"></label></td>
-              <td><label for="bookAuthor"><input type="text" name="bookAuthor" id="bookAuthor"></label></td>
-              <td>
-                <input type="checkbox" name="read" id="readLibraryCheckbox" checked disabled />
+              <td>Name of The Wind</td>
+              <td>Patrick Rothfuss</td>
+              <td><input type="checkbox" name="read" id="readLibraryCheckbox" checked disabled />
               </td>
             </tr>
           </tbody>
         </table>
-        <button type="submit">Add Info</button>
       </div>
   </main>
 
