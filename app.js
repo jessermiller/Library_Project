@@ -2,8 +2,8 @@
 
 // PROJECT Section
 console.log("PROJECT:\n==========\n");
-const submitBook = document.getElementById("#addBookButton");
-const unsubmitBook = document.getElementById("#removeBookButton");
+const submitBook = document.getElementById("addBookButton");
+const unsubmitBook = document.getElementById("removeBookButton");
 
 
 
@@ -36,9 +36,9 @@ class library {
 
     addBook() {
         
-       const title = document.getElementById("#bookTitle");
-       const author = document.getElementById("#bookAuthor");
-       const read = document.getElementById("#bookRead");
+       const title = document.getElementById("bookTitle");
+       const author = document.getElementById("bookAuthor");
+       const read = document.getElementById("bookRead");
        const addedBook = (title.value, author.value, read.checked);
    
        const tBody = document.getElementById("tableBody");
