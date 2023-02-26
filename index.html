@@ -26,11 +26,11 @@
         <table>
           <label for="bookTitle">Title&nbsp<input type="text" name="bookTitle" id="bookTitle"></label>
           <label for="bookAuthor">&nbspAuthor&nbsp<input type="text" name="bookAuthor" id="bookAuthor"></label>
-          <label for="bookRead">&nbspRead&nbsp<input type="checkbox" name="bookRead" id="bookRead"></label>
+          <label for="bookRead">&nbspRead&nbsp<input type="checkbox"  name="bookRead" id="bookRead"></label>
         </table>
         <br>
         <button id="addBookButton" type="submit" >Add Book</button>
-        <button id="removeBookButton" type="submit">Remove Book</button>
+        <!--<button id="removeBookButton" type="submit">Remove Book</button>-->
         <table id="table" style="min-width: 680px; margin: 2rem">
           <h1>Library</h1>
           <thead>
@@ -38,14 +38,15 @@
               <th>Title</th>
               <th>Author</th>
               <th>Read</th>
+              <th>Remove</th>
             </tr>
           </thead>
           <tbody id="tableBody">
             <tr>
               <td>Name of The Wind</td>
               <td>Patrick Rothfuss</td>
-              <td><input type="checkbox" name="read" id="readLibraryCheckbox" checked disabled />
-              </td>
+              <td><input type="checkbox" name="read" id="readLibraryCheckbox" checked disabled /></td>
+              <td><button type="submit" name="rmvBookButton" id="rmvBookButton">Delete</button></td>
             </tr>
           </tbody>
         </table>

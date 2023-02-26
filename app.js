@@ -4,7 +4,7 @@
 console.log("PROJECT:\n==========\n");
 const submitBook = document.getElementById("addBookButton");
 const unsubmitBook = document.getElementById("removeBookButton");
-
+const checkboxMark = document.getElementById("bookRead");
 
 
 // const books = [{
@@ -19,25 +19,25 @@ class Book {
         this.title = title;
         this.author = author;
         this.read = read;
+        
     }
 }
 class Library {
     constructor(books, bookCount) {
         this.bookCount = 1;
-        this.books = [
-            {
-                id: 1,
-                title: 'Hey',
-                author: 'Arnold',
-                read: true,
+        this.books = [{
+            id: 0,
+            title: 'Name of The Wind',
+            author: 'Patrick Rothfuss',
+            read: true,
 
-            }
-        ];
+        }];
         this.markRead = this.markRead.bind(this);
         this.addBook = this.addBook.bind(this);
 
     }
     markRead(checkbox, id) {
+        
         for (
             let book of library.books
         ) {
@@ -48,7 +48,7 @@ class Library {
                 checkbox.disabled = true;
 
 
-            }
+            } 
         }
 
     }
@@ -60,23 +60,37 @@ class Library {
         const title = document.getElementById("bookTitle");
         const author = document.getElementById("bookAuthor");
         const read = document.getElementById("bookRead");
+        const removeButton = document.getElementById("rmvBookButton");
         //const addedBook = (title.value, author.value, read.checked);
+        const addedTitle = title.value;
+        const addedAuthor = author.value;
+        const addedRead = read.value;
 
-
-        let newBook = new Book(this.bookCount, title, author, read);
+        let newBook = new Book(this.bookCount, addedTitle, addedAuthor, addedRead, newDelete);
         this.books.push(newBook);
+        
+        console.log(library.books);
+       
 
         const tBody = document.getElementById("tableBody");
         const tRow = document.createElement("tr")
         const addTitle = document.createElement("td");
         const addAuthor = document.createElement("td");
         const newRead = document.createElement("td");
-        addTitle.textContent = newBook.title;
-        addAuthor.textContent = newBook.author;
+        const newDelete = document.createElement("td");
+        addTitle.textContent = addedTitle;
+        addAuthor.textContent = addedAuthor;
+        const newRemoveButt = document.createElement("button");
+        
+        newRemoveButt.innerText = "Delete";
+        newDelete.appendChild(newRemoveButt);
         const newCheck = document.createElement("input");
         newCheck.setAttribute("type", "checkbox");
         newCheck.checked = newBook.read;
-        newCheck.disabled = newBook.read; 
+        newCheck.disabled = newBook.read;
+        checkboxMark.addEventListener("click", (addBook)=> {
+            library.markRead(newCheck);
+        });
         // add event listener on checkbox that runs a function called library.markedread(newCheck)
         newRead.appendChild(newCheck);
         tRow.appendChild(addTitle);
@@ -84,7 +98,7 @@ class Library {
         tRow.appendChild(newRead);
         tBody.appendChild(tRow);
 
-        
+
 
         this.bookCount++;
 
@@ -92,13 +106,20 @@ class Library {
     }
 
 
-    removeBook() {
-
-    }
+    //   removeBook()  {
+        
+    //     for (books of library.books) {
+    //          if (id == );
+    //       }
+          
+    //   }
 
 
 }
 let library = new Library();
-submitBook.addEventListener("click", ()=>{
+
+
+
+submitBook.addEventListener("click", () => {
     library.addBook(library.books, library.bookCount);
 });
