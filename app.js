@@ -3,8 +3,9 @@
 // PROJECT Section
 console.log("PROJECT:\n==========\n");
 const submitBook = document.getElementById("addBookButton");
-const unsubmitBook = document.getElementById("removeBookButton");
+//const unsubmitBook = document.getElementById("removeBookButton");
 const checkboxMark = document.getElementById("bookRead");
+const removeButtonHTML = document.getElementById("rmvBookButton");
 
 
 // const books = [{
@@ -14,11 +15,14 @@ const checkboxMark = document.getElementById("bookRead");
 // }] 
 
 class Book {
-    constructor(id, title, author, read) {
+    constructor(id, title, author, read, btn) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.read = read;
+        this.btn = btn;
+        
+        
         
     }
 }
@@ -30,6 +34,7 @@ class Library {
             title: 'Name of The Wind',
             author: 'Patrick Rothfuss',
             read: true,
+           btn: null,
 
         }];
         this.markRead = this.markRead.bind(this);
@@ -60,16 +65,19 @@ class Library {
         const title = document.getElementById("bookTitle");
         const author = document.getElementById("bookAuthor");
         const read = document.getElementById("bookRead");
-        const removeButton = document.getElementById("rmvBookButton");
+        const btn = document.getElementById("rmvBookButton");
+        //const removeButton = document.getElementById("rmvBookButton");
         //const addedBook = (title.value, author.value, read.checked);
         const addedTitle = title.value;
         const addedAuthor = author.value;
         const addedRead = read.value;
+        const addedNewRemoveButt = btn.value;
 
-        let newBook = new Book(this.bookCount, addedTitle, addedAuthor, addedRead, newDelete);
+        let newBook = new Book(this.bookCount, addedTitle, addedAuthor, addedRead, addedNewRemoveButt);
         this.books.push(newBook);
         
         console.log(library.books);
+        
        
 
         const tBody = document.getElementById("tableBody");
@@ -80,9 +88,10 @@ class Library {
         const newDelete = document.createElement("td");
         addTitle.textContent = addedTitle;
         addAuthor.textContent = addedAuthor;
-        const newRemoveButt = document.createElement("button");
-        
-        newRemoveButt.innerText = "Delete";
+        const newRemoveButt = document.createElement("input");
+        newRemoveButt.setAttribute = ("type", "button");
+        newRemoveButt.id = 1;
+        newRemoveButt.innerText = "delete";
         newDelete.appendChild(newRemoveButt);
         const newCheck = document.createElement("input");
         newCheck.setAttribute("type", "checkbox");
@@ -92,11 +101,13 @@ class Library {
             library.markRead(newCheck);
         });
         // add event listener on checkbox that runs a function called library.markedread(newCheck)
+        newDelete.appendChild(newRemoveButt);
         newRead.appendChild(newCheck);
         tRow.appendChild(addTitle);
         tRow.appendChild(addAuthor);
         tRow.appendChild(newRead);
         tBody.appendChild(tRow);
+       
 
 
 
