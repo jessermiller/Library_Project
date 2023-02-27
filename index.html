@@ -6,9 +6,72 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Library Project</title>
   <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    h1{
+      margin-top: 10px;
+    }
+    div {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+    }
+    #libraryword {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+     
+      margin-top: 25px;
+    }
+    #library{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-right: 60px;
+      flex-wrap: wrap;
+      
+    }
+    #tabletop {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      margin-top: 25px;
+      flex-wrap: wrap;
+    }
     body {
       background-color: #C19A6B;
     }
+    #addBookButton:hover {
+background-color: rgb(47, 138, 72);
+    }
+
+    #addBookButton {
+      padding: 5px;
+      margin-left: 5px;
+      margin-bottom: 2px;
+    }
+
+    button {
+      border: none;
+      border-radius: 48%;
+      margin-top: 2px;
+      padding: .5rem;
+    }
+    #removeBookBtn {
+      margin-top: 2px;;
+    }
+button:hover {
+  background-color: rgb(215, 68, 35);
+}
+
+
+
   </style>
 </head>
 
@@ -21,18 +84,22 @@
       ">
     <div>
       <h1>Supply & Withdrawl</h1>
-      <div id="library">
+      
         <!-- Add table here -->
-        <table>
-          <label for="bookTitle">Title&nbsp<input type="text" name="bookTitle" id="bookTitle"></label>
-          <label for="bookAuthor">&nbspAuthor&nbsp<input type="text" name="bookAuthor" id="bookAuthor"></label>
-          <label for="bookRead">&nbspRead&nbsp<input type="checkbox"  name="bookRead" id="bookRead"></label>
-        </table>
-        <br>
-        <button id="addBookButton" type="submit" >Add Book</button>
+       <div id="tabletop"> <table>
+        <label for="bookTitle">Title&nbsp<input type="text" name="bookTitle" id="bookTitle"></label>
+        <label for="bookAuthor">&nbspAuthor&nbsp<input type="text" name="bookAuthor" id="bookAuthor"></label>
+        <label for="bookRead">&nbspRead&nbsp<input type="checkbox"  name="bookRead" id="bookRead"></label>
+      </table>
+      <br>
+      <button id="addBookButton" type="submit" >Add Book</button></div>
+       
+      <h1 id="libraryword">Library</h1>
+      <div id="library">
        <!-- <button id="removeBookButton" type="submit">Remove Book</button>-->
         <table id="table" style="min-width: 680px; margin: 2rem">
-          <h1>Library</h1>
+          
+          
           <thead>
             <tr>
               <th>Title</th>
@@ -50,6 +117,7 @@
             </tr>
           </tbody>
         </table>
+      </div>
       </div>
   </main>
 

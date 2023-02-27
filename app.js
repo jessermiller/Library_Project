@@ -94,9 +94,9 @@ class Library {
         newRemoveButt.setAttribute("class", "removeBookBtnn");
 
         newRemoveButt.innerText = "Delete";
-        
 
-        
+
+
         const newCheck = document.createElement("input");
         newCheck.setAttribute("type", "checkbox");
         newCheck.checked = newBook.read;
@@ -116,21 +116,21 @@ class Library {
 
 
         this.bookCount++;
-        
+
 
 
     }
-   
+
 
     removeItem() {
         console.log("runnin!");
 
-        
-           if (this.book != "") {
+// maybe for each 
+        if (this.book != "") {
             tRow.remove();
-            
-           }
-           
+
+        }
+
     }
 
 
@@ -143,11 +143,10 @@ submitBook.addEventListener("click", () => {
     library.addBook(library.books, library.bookCount);
     const removeButtonHTML = document.getElementsById("removeBookBtn");
 
-    
+
 });
 
 
 removeButtonHTML.addEventListener("click", () => {
     library.removeItem(library.books, library.bookCount);
 })
-
