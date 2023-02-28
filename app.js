@@ -28,25 +28,20 @@ class Book {
 class Library {
     constructor(books, bookCount) {
         this.bookCount = 1;
-        this.books = [{
-            id: 0,
-            title: 'Name of The Wind',
-            author: 'Patrick Rothfuss',
-            read: true,
-
-
-        }];
+          this.books = [
+            new Book(0, 'Name of The Wind', 'Patrick Rothfuss', true)
+    ];
         this.markRead = this.markRead.bind(this);
         this.addBook = this.addBook.bind(this);
 
     }
     markRead(checkbox, id) {
-
+ 
         for (
             let book of library.books
         ) {
-            if (book.id == checkbox.id) {
-                console.log(checkbox);
+            if (book.id == id) {
+                console.log('mark book as read')
                 book.read = true;
                 checkbox.checked = true;
                 checkbox.disabled = true;
@@ -69,7 +64,8 @@ class Library {
         //const addedBook = (title.value, author.value, read.checked);
         const addedTitle = title.value;
         const addedAuthor = author.value;
-        const addedRead = read.value;
+        const addedRead = read.checked;
+        console.log("read value",read.checked);
 
 
         let newBook = new Book(this.bookCount, addedTitle, addedAuthor, addedRead);
@@ -81,7 +77,7 @@ class Library {
 
         const tBody = document.getElementById("tableBody");
         const tRow = document.createElement("tr")
-        tRow.setAttribute("id", "tRow");
+        tRow.setAttribute("id", `tRow${this.bookCount}`);
         const addTitle = document.createElement("td");
         const addAuthor = document.createElement("td");
         const newRead = document.createElement("td");
@@ -89,21 +85,26 @@ class Library {
         addTitle.textContent = addedTitle;
         addAuthor.textContent = addedAuthor;
         const newRemoveButt = document.createElement("button");
-
+        
         newRemoveButt.setAttribute("id", "removeBookBtn");
         newRemoveButt.setAttribute("class", "removeBookBtnn");
 
         newRemoveButt.innerText = "Delete";
+        let currentID = this.bookCount;
 
+        newRemoveButt.addEventListener("click", () => {
+            helpremovebook(currentID);
 
+        })
 
         const newCheck = document.createElement("input");
         newCheck.setAttribute("type", "checkbox");
         newCheck.checked = newBook.read;
         newCheck.disabled = newBook.read;
-        checkboxMark.addEventListener("click", (addBook) => {
-            library.markRead(newCheck);
+        newCheck.addEventListener("click", (addBook) => {
+            helpMarkRead(newCheck, currentID);
         });
+
         newDelete.appendChild(newRemoveButt);
         newRead.appendChild(newCheck);
         tRow.appendChild(addTitle);
@@ -122,31 +123,60 @@ class Library {
     }
 
 
-    removeItem() {
-        console.log("runnin!");
+    removeItem(id) {
+        console.log("!runnin");
+        
+        console.log("before",this.books);
+        
+        this.books = this.books.filter( (book) =>{
+            console.log(book.id,id);
+            if (book.id == id) {
+                return false;
+            } else {
+                return true;
+            }
+
+
+        }) 
+        console.log("after",this.books);
+       let bookHTML = document.getElementById(`tRow${id}`);
+       this.bookCount -=  1;
+       bookHTML.remove();
+     //  const tBody = document.getElementById("tableBody");
+
+
+
 
 // maybe for each 
-        if (this.book != "") {
-            tRow.remove();
+    //     if (this.book != "") {
+    //         tRow.remove();
 
-        }
+    //     }
 
-    }
+ }
 
 
-}
+} 
 
 let library = new Library();
 
+function helpremovebook(currentID){
+    library.removeItem(currentID);
+}
+
+function helpMarkRead(checkbox, id){
+    library.markRead(checkbox, id);
+}
+
+document.getElementById("rmvBookButton").addEventListener("click", ()=> {
+    helpremovebook(0);
+})
 
 submitBook.addEventListener("click", () => {
     library.addBook(library.books, library.bookCount);
-    const removeButtonHTML = document.getElementsById("removeBookBtn");
+    //const removeButtonHTML = document.getElementsById("removeBookBtn");
 
 
 });
 
 
-removeButtonHTML.addEventListener("click", () => {
-    library.removeItem(library.books, library.bookCount);
-})
